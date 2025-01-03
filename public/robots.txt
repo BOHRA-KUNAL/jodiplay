@@ -1,0 +1,4 @@
+User-agent: *
+Allow:
+Disallow: /add-fund/
+Sitemap: https://jodiplay.com/sitemap.xml

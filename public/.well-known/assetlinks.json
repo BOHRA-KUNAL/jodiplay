@@ -1,0 +1,9 @@
+[{
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.jodi.play",
+      "sha256_cert_fingerprints":
+      ["85:88:D0:C3:71:56:25:1E:50:A4:EC:97:F7:75:14:AF:1B:2B:21:AC:8D:09:58:29:91:EA:09:18:BE:F2:18:EB"]
+    }
+  }]

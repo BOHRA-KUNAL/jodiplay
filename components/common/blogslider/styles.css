@@ -1,0 +1,11 @@
+
+
+.blogs_mobile_slider{
+    display: hidden;
+}
+
+@media (max-width: 600px) {
+    .blogs_mobile_slider{
+        display: block;
+    }
+  }

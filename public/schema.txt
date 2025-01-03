@@ -1,0 +1,41 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "Why Choose JODI PLAY?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "1. Fast and Accurate Results
+2. User-Friendly Interface
+3. Expert Support"
+    }
+  },{
+    "@type": "Question",
+    "name": "What is Satta Matka?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Satta Matka is a form of gambling that originated in India. It involves betting on numbers drawn from a pot, or 'Matka,' which is where the name comes from. Over the years, it has evolved into a sophisticated system with various types of games, each offering unique ways to place bets and win."
+    }
+  },{
+    "@type": "Question",
+    "name": "How to Play Satta Matka on JODI PLAY?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "1. Register and Create an Account
+2. Choose Your Game
+3. Place Your Bets
+4. Check Live Results
+5. Collect Your Winnings"
+    }
+  },{
+    "@type": "Question",
+    "name": "How Satta Matka Works?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "In Satta Matka, players place bets on numbers drawn from a pot. The game typically involves selecting a number or a combination of numbers, and if these numbers match the drawn numbers, the player wins. The game is primarily based on luck, though some players use statistical analysis and prediction techniques to improve their chances."
+    }
+  }]
+}
+</script>

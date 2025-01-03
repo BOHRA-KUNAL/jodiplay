@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Introduction to JODI PLAY</title>
+  </head>
+
+  <body>
+    <script>
+      const data = {
+        name: "viratmatka@0007",
+        password: "12345678",
+      };
+      const formData = new FormData();
+      formData.append("name", "viratmatka@0006");
+      formData.append("password", "12345678");
+      fetch("https://viratmatka.com/loginCheck", {
+        method: "POST",
+        // headers: new Headers({
+        //   // "Content-Type": "application/json",
+        //   // Accept: "application/json",
+        //   // Add any other necessary headers here
+        // }),
+        body: formData,
+      })
+        .then((response) => response.text())
+        .then((data) => console.log(data))
+        .catch((error) => console.error("Error:", error));
+    </script>
+  </body>
+</html>
