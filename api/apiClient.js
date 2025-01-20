@@ -352,7 +352,19 @@ class ApiManager {
       method: "get",
     });
   }
+
+  async getGamePageDetails(data) {
+
+    console.log("dar--",data.title)
+    return axios({
+      url: baseUrl + endPoint.gamePageDetails+data.title,
+      method: "post",
+      data: data,
+    });
+  }
 }
+
+
 
 const ApiClient = new ApiManager();
 export default ApiClient;

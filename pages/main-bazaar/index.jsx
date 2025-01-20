@@ -4,8 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
 
-import { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
 export default function MainBazar() {
   const [isVisible, setIsVisible] = useState(true);
@@ -17,23 +17,29 @@ export default function MainBazar() {
 
   const DownloadApplication = () => {
     router.push("https://backend.jodiplay.com/logo/Jodi_Play.apk");
-  }
+  };
 
   return (
     <div>
       <Head>
         <title>Play Main Bazar Satta Matka Online | Free Registration</title>
-        <meta name="description" content="Get fast results and live updates for Main Bazar. Play multiple Satta Matka games online anytime and increase your chances to win big. Click now to play!" />
-        <meta name="keywords" content="Main Bazar, Morning Time Bazar, Time Bazar Night Chart, Time Bazar Second, Time Bazar Nikal, Time Bazar Guessing, Time Bazar Total Chart, Time Bazar Panel Chart, Satta Matka, Jodiplay, Play Online, Live, Record, Book, Bazar, Online Satta Matka App Download, Betting, Gaming" />
+        <meta
+          name="description"
+          content="Get fast results and live updates for Main Bazar. Play multiple Satta Matka games online anytime and increase your chances to win big. Click now to play!"
+        />
+        <meta
+          name="keywords"
+          content="Main Bazar, Morning Time Bazar, Time Bazar Night Chart, Time Bazar Second, Time Bazar Nikal, Time Bazar Guessing, Time Bazar Total Chart, Time Bazar Panel Chart, Satta Matka, Jodiplay, Play Online, Live, Record, Book, Bazar, Online Satta Matka App Download, Betting, Gaming"
+        />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.jodiplay.com/main-bazar" />
       </Head>
 
-      <header>
+      {/* <header>
         <h1>Welcome to Main Bazar</h1>
-      </header>
+      </header> */}
 
-      <section className="banner">
+      {/* <section className="banner">
         <Image
           src={'/mainbazaar.jpg'} // replace with actual image URL
           alt="main bazar panel chart"
@@ -163,11 +169,74 @@ export default function MainBazar() {
       >
         <FileDownloadIcon style={{ marginRight: "5px" }} />
         Download Mobile App
-      </a>
+      </a> */}
+
+      {/* new code */}
+      <div>
+        <div className="post_heading_main">
+          <div className="post_heading">
+            <h4 className="post_meta_category">ADVERTISING MARKETING AND PR</h4>
+
+            <h1 className="entry_title">
+            Main Bazar: Play Online Satta Matka on JodiPlay
+            </h1>
+          </div>
+        </div>
+
+        <div className="post_img_main">
+          <img
+            src="https://www.bizbangboom.com/wp-content/uploads/2025/01/a-vibrant-and-creative-digital-marketing_Q4TVgiSIR6uR02Oi1n8RjQ_bY8NBqQuRxqIAXfZz_O5Xg-1024x508.png"
+            alt=""
+          />
+        </div>
+
+        <div className="post_img_main_content ">
+          <h3>
+          What is the Main Bazar?
+          </h3>
+
+          <p>
+          Main Bazar is a thrilling and fun <strong>Satta Matka</strong> game where players pick numbers, watch results, and win prizes. It's easy to play and exciting, especially when you play online on <a href="https://jodiplay.com/">JodiPlay</a>. Whether you're new or experienced, Main Bazar offers a great chance to enjoy and win. You can also explore <a href="https://jodiplay.com/time-bazaar">Time Bazaar</a>, <a href="https://jodiplay.com/karnataka-day">Karnataka Day</a>, and <a href="https://jodiplay.com/madhur-morning">Madhur Morning</a> for more options!
+          </p>
+
+
+          <div className="d-flex justify-content-center my-4">
+            <button
+              style={{
+                backgroundColor: "#000080",
+                padding: "5px 10px",
+                width: "30%",
+                borderRadius: "8px",
+                color: "#fff",
+              }}
+              onClick={DownloadApplication}
+            >
+              Play Online Matka
+            </button>
+          </div>
+
+
+          <h3>How to Play Main Bazar on JodiPlay</h3>
+          <p>Playing Main Bazar on JodiPlay is easy. Here's how it works:</p>
+          <ol>
+            <li>Pick Your Numbers: Choose your favorite numbers or a Jodi.</li>
+            <li>Open and Close Times: Main Bazar has open and close times. Make sure to place your bet before the game closes.</li>
+            <li>Check the Panel Chart: Use the panel chart to help with guessing. It shows past results, which can help you pick winning numbers.</li>
+            <li>Watch the Results: Once the game ends, check the live result on JodiPlay. If your numbers match, you win!</li>
+          </ol>
+
+          <h3>Day and Night Play</h3>
+          <p>Main Bazar offers both day and night charts. This means you can play during the day or wait for the night to test your luck. No matter when you play, the game always brings fun and the chance to win big.</p>
+
+          <h3>Using the Panel Chart and Guessing</h3>
+          <p>Guessing is an important part of Satta Matka. Many players use the panel chart to help with their guesses. The chart shows previous winning numbers, making it easier to choose the right ones.</p>
+          
+        </div>
+      </div>
 
       <style jsx>{`
         .pfooter {
-            color: #fff;
+          color: #fff;
         }
 
         header {
@@ -202,11 +271,12 @@ export default function MainBazar() {
         h2 {
           color: navy; /* Navy blue for headings */
         }
-        ol, ul {
+        ol,
+        ul {
           margin: 10px 0;
           padding-left: 20px;
         }
-          .back-to-top {
+        .back-to-top {
           color: #fff;
           border: 1px inset #000;
           font-style: italic;

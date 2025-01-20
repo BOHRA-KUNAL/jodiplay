@@ -226,8 +226,9 @@ const HomeMain = () => {
 
   const renderGameswithoutlogin = () => {
     return infowl.map((game, index) => {
+      // console.log("game--->>",game)
       const isClosed = new Date() > new Date(`${new Date().toDateString()} ${game.closeTime}`);
-      const { game_name, openTime, closeTime } = game;
+      const { game_name, game_url, openTime, closeTime } = game;
 
       return (
         <div key={index} className="game-list-inner d-flex justify-content-between ps-2 pe-3 px-md-4 px-lg-5">
@@ -241,7 +242,11 @@ const HomeMain = () => {
           </div>
           <div className="my-auto">
             <div className="game-list-box">
+              {/* <a target="_blank" href={game_url}> */}
+              <a href={`/games/${game_name}`}>
               <span className="gameName bold mb-1 heading">{game_name}</span>
+              </a>
+              {/* </a> */}
               <div className="bold f-15 mb-1">
                 {formatGameResult(game)}
               </div>

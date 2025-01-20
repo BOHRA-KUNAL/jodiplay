@@ -29,6 +29,7 @@ let endPoint = {
   homePageSlider: "api-get-slider-images",
   allblogs: "api-list-all-blogs",
   blogDetails: "api-get-blog-details-by-url/",
+  gamePageDetails: "get-article?slug=",
   contactDetails: "contact-settings-grid-data",
   ApiCheckMobile: "api-check-mobile",
   sendotp: "api-otp-sent",

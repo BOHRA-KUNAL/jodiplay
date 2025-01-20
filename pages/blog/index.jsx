@@ -23,6 +23,8 @@ const index = () => {
   useEffect(() => {
     fetChImages();
   }, []);
+
+  
   return (
     <div className="container">
       <div className="d-flex flex-wrap">
