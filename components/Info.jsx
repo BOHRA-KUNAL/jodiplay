@@ -183,7 +183,7 @@ const Info = () => {
             </section>
           </div>
 
-          <div
+          {/* <div
             style={{
               backgroundColor: "white",
               color: "#000",
@@ -999,7 +999,7 @@ const Info = () => {
               Keywords: Time Bazaar, Time Bazaar Results, Time Bazaar Betting,
               Time Bazaar Game
             </p>
-          </div>
+          </div> */}
 
           <div
             style={{
