@@ -230,6 +230,10 @@ const HomeMain = () => {
       const isClosed = new Date() > new Date(`${new Date().toDateString()} ${game.closeTime}`);
       const { game_name, game_url, openTime, closeTime } = game;
 
+      const slug = game_url.split("/").pop()
+
+      console.log("slug===",slug)
+
       return (
         <div key={index} className="game-list-inner d-flex justify-content-between ps-2 pe-3 px-md-4 px-lg-5">
           <div className="my-auto">
@@ -243,7 +247,7 @@ const HomeMain = () => {
           <div className="my-auto">
             <div className="game-list-box">
               {/* <a target="_blank" href={game_url}> */}
-              <a href={`/games/${game_name}`}>
+              <a href={`/games/${slug}`}>
               <span className="gameName bold mb-1 heading">{game_name}</span>
               </a>
               {/* </a> */}

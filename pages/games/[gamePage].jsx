@@ -9,20 +9,16 @@ const gamePage = () => {
   const [gameDetails, setGameDetails] = useState();
   // console.log("gameDetails---->>", gameDetails);
 
-  function formatUrl(input) {
-    const decoded = decodeURIComponent(input); // Decode URL (handles %20)
-    const extracted = decoded.split("/").pop(); // Extract the last part after '/'
-    return extracted.toLowerCase().replace(/\s+/g, "-"); // Convert to lowercase and replace spaces with dashes
-  }
+  
   const pathname = usePathname();
+  const slug = pathname?.split('/').pop();
+  console.log("pathname==",slug)
 
-  const output = formatUrl(pathname);
-  console.log("---0", output);
 
   const fetChGameDetails = () => {
     ApiClient.getGamePageDetails({
       app_key: "@34@Y#456)D9)(JE4dsj36f$%#(jodiplay!com)8fe8345*&^ef8ef8",
-      title: output,
+      title: slug,
     })
       .then((res) => {
         console.log("response---", res.data.result[0]);
@@ -45,7 +41,7 @@ const gamePage = () => {
 
   useEffect(() => {
     fetChGameDetails();
-  }, [output]);
+  }, [pathname]);
   return (
     <div>
       <div>
