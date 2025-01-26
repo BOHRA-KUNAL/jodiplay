@@ -75,10 +75,7 @@ export default function BlogSlider() {
                   <SwiperSlide>
                     <div className="container w-full bg-white rounded">
                       <div className="d-flex flex-wrap ">
-                        <div
-                          className="   "
-                          key={index}
-                        >
+                        <div className="   " key={index}>
                           <a href={`/blog/${item.blog_url}`}>
                             <div className="d-flex-column  align-items-center m-3">
                               <div>
@@ -114,7 +111,7 @@ export default function BlogSlider() {
             </Swiper>
           ) : (
             <div className="container w-full">
-              <div className="d-flex flex-wrap ">
+              <div className="d-flex justify-content-center ">
                 {allBlogs?.map((item, index) => (
                   <div
                     className=" col-md-12 col-lg-4 m-2  bg-white rounded"

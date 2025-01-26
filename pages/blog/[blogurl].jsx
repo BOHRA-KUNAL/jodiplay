@@ -13,6 +13,8 @@ const blog = () => {
   // console.log(router.query);
   const { blogurl } = router.query;
   const [allBlogs, setAllBlogs] = useState();
+
+  console.log("allBlogs===>>",allBlogs)
   const [allData, setAllData] = useState({});
   const [errors, setErrors] = useState({});
 
