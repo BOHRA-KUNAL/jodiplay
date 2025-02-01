@@ -3,6 +3,7 @@ import Inputbox from "@/components/common/Inputbox";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
+import Head from "next/head";
 
 const blog = () => {
   const router = useRouter();
@@ -14,7 +15,7 @@ const blog = () => {
   const { blogurl } = router.query;
   const [allBlogs, setAllBlogs] = useState();
 
-  console.log("allBlogs===>>",allBlogs)
+  console.log("allBlogs===>>", allBlogs);
   const [allData, setAllData] = useState({});
   const [errors, setErrors] = useState({});
 
@@ -108,10 +109,16 @@ const blog = () => {
 
   return (
     <div>
+      <Head>
+        <title>{allBlogs?.meta_title}</title>
+
+        <meta name="description" content={allBlogs?.meta_description} />
+      </Head>
+
       <div>
         <img
           src={allBlogs?.blog_img}
-          alt=""
+          alt={allBlogs?.img_alt_text}
           className="w-full"
           style={{
             height: "270px",
@@ -123,7 +130,7 @@ const blog = () => {
 
       <div className="container">
         <div className="d-flex flex-wrap m-2 position-relative">
-          <div className="col-xs-12 col-md-8" style={{paddingBottom: "4rem"}}>
+          <div className="col-xs-12 col-md-8" style={{ paddingBottom: "4rem" }}>
             <div>
               <p
                 className="blogs_para"
@@ -131,7 +138,10 @@ const blog = () => {
               ></p>
             </div>
           </div>
-          <div style={{paddingBottom: "5rem"}} className="col-sm-12  col-md-4 ">
+          <div
+            style={{ paddingBottom: "5rem" }}
+            className="col-sm-12  col-md-4 "
+          >
             <div className="position-sticky top-0">
               <div className="customCard p-3 w-100 m-3 mw700 my-4 ">
                 <div className="text-center">
