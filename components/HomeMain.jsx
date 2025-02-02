@@ -404,7 +404,7 @@ const HomeMain = () => {
       )}
 
       <audio ref={audioRef} src="/sound.mp3" preload="auto" />
-      {showInfoModal()}
+      {/* {showInfoModal()} */}
 
       {!isAuthenticated && (
         <section className="d-lg-none sm-d-block sectionhome">
