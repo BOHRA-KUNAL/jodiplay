@@ -31,7 +31,7 @@ axios.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-const baseUrl = "https://backend.jodiplay.com/";
+export const baseUrl = "https://backend.jodiplay.com/";
 
 function shouldSendToken(url) {
   const excludedEndpoints = [];

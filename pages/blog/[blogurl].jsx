@@ -1,11 +1,41 @@
-import ApiClient from "@/api/apiClient";
+import ApiClient, { baseUrl } from "@/api/apiClient";
 import Inputbox from "@/components/common/Inputbox";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import Head from "next/head";
+import endPoint from "@/api/endPoint";
 
-const blog = () => {
+
+export async function getServerSideProps(context) {
+
+  const data = await fetch(baseUrl + endPoint.blogDetails, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      // Add any other necessary headers here (like authorization or custom headers)
+    },
+    body: JSON.stringify({
+      app_key: "@34@Y#456)D9)(JE4dsj36f$%#(jodiplay!com)8fe8345*&^ef8ef8",
+      blog_url: context?.params?.blogurl,
+    }),
+  });
+
+  if (!data.ok) {
+    throw new Error('Network response was not ok');
+  }
+
+  const responseData = await data.json();
+
+
+  return {
+    props: {
+      ...responseData?.result[0]
+    },
+  };
+}
+
+const blog = (params) => {
   const router = useRouter();
   const [isVisible, setIsVisible] = useState(true);
   const scrollToTop = () => {
@@ -15,7 +45,6 @@ const blog = () => {
   const { blogurl } = router.query;
   const [allBlogs, setAllBlogs] = useState();
 
-  console.log("allBlogs===>>", allBlogs);
   const [allData, setAllData] = useState({});
   const [errors, setErrors] = useState({});
 
@@ -76,8 +105,8 @@ const blog = () => {
     } catch (error) {
       toast.error(
         error?.response?.data?.msg ||
-          error?.message ||
-          "An error occurred during sign-up"
+        error?.message ||
+        "An error occurred during sign-up"
       );
     }
   };
@@ -110,15 +139,15 @@ const blog = () => {
   return (
     <div>
       <Head>
-        <title>{allBlogs?.meta_title}</title>
+        <title>{params?.meta_title}</title>
 
-        <meta name="description" content={allBlogs?.meta_description} />
+        <meta name="description" content={params?.meta_description} />
       </Head>
 
       <div>
         <img
-          src={allBlogs?.blog_img}
-          alt={allBlogs?.img_alt_text}
+          src={params?.blog_img}
+          alt={params?.img_alt_text}
           className="w-full"
           style={{
             height: "270px",
@@ -131,12 +160,11 @@ const blog = () => {
       <div className="container">
         <div className="d-flex flex-wrap m-2 position-relative">
           <div className="col-xs-12 col-md-8" style={{ paddingBottom: "4rem" }}>
-            <div>
-              <p
-                className="blogs_para"
-                dangerouslySetInnerHTML={{ __html: allBlogs?.blog_desc }}
-              ></p>
-            </div>
+            <div
+              className="blogs_para"
+              dangerouslySetInnerHTML={{ __html: params?.blog_desc }}
+            ></div>
+
           </div>
           <div
             style={{ paddingBottom: "5rem" }}

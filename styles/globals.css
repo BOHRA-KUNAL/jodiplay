@@ -11,6 +11,10 @@
   --galiCardBG: #d9d9d9;
 }
 
+strong{
+  font-weight: 800 !important;
+}
+
 .font-12 {
   font-size: 12px;
 }
