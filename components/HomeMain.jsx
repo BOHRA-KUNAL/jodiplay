@@ -79,36 +79,39 @@ const HomeMain = () => {
   }, [isAuthenticated]);
 
   useEffect(() => {
-    if (query.welcomesound === 'true' && audioRef.current) {
-      audioRef.current.play()
+    if (query.welcomesound === "true" && audioRef.current) {
+      audioRef.current
+        .play()
         .then(() => {
           router.replace(router.pathname, undefined, { shallow: true });
         })
-        .catch(error => {
+        .catch((error) => {
           console.error("Audio playback failed:", error);
         });
     }
   }, [query.welcomesound, router]);
 
   useEffect(() => {
-    if (query.transaction === 'true') {
+    if (query.transaction === "true") {
       Swal.fire({
         title: "Success!",
         text: "Payment Successful!",
-        icon: "success"
+        icon: "success",
       });
-    } else if (query.transaction === 'false') {
+    } else if (query.transaction === "false") {
       Swal.fire({
         title: "Oops!",
         text: "Payment Failed!",
-        icon: "error"
+        icon: "error",
       });
     }
 
     if (query.transaction) {
-    const newUrl = router.pathname + router.asPath.replace(/(\?|&)transaction=[^&]*(&|$)/, '$1');
-    router.replace(newUrl, undefined, { shallow: true });
-  }
+      const newUrl =
+        router.pathname +
+        router.asPath.replace(/(\?|&)transaction=[^&]*(&|$)/, "$1");
+      router.replace(newUrl, undefined, { shallow: true });
+    }
   }, [query.transaction]);
 
   const fetchInfo = () => {
@@ -139,7 +142,9 @@ const HomeMain = () => {
   };
 
   const fetchSliderText = () => {
-    ApiClient.getSliderText({app_key: '@34@Y#456)D9)(JE4dsj36f$%#(jodiplay!com)8fe8345*&^ef8ef8'})
+    ApiClient.getSliderText({
+      app_key: "@34@Y#456)D9)(JE4dsj36f$%#(jodiplay!com)8fe8345*&^ef8ef8",
+    })
       .then((res) => {
         setSlidingText(res.data.content.newsText);
       })
@@ -149,7 +154,9 @@ const HomeMain = () => {
   };
 
   const fetChImages = () => {
-    ApiClient.homeSliderImages({app_key: '@34@Y#456)D9)(JE4dsj36f$%#(jodiplay!com)8fe8345*&^ef8ef8'})
+    ApiClient.homeSliderImages({
+      app_key: "@34@Y#456)D9)(JE4dsj36f$%#(jodiplay!com)8fe8345*&^ef8ef8",
+    })
       .then((res) => {
         if (res?.data?.status && Array.isArray(res.data.sliderdata)) {
           setSliderImages(res.data.sliderdata);
@@ -173,7 +180,9 @@ const HomeMain = () => {
           </div>
           <div className="d-flex bold align-items-center justify-content-center gap-2 f-12">
             <span className="bold"> Market Status : </span>
-            <p className={`${isClosed ? "gameoff" : "gameon"} bold`}>{isClosed ? " Close" : " Running"}</p>
+            <p className={`${isClosed ? "gameoff" : "gameon"} bold`}>
+              {isClosed ? " Close" : " Running"}
+            </p>
           </div>
         </>
       );
@@ -208,38 +217,52 @@ const HomeMain = () => {
 
   const formatGameResult = (game) => {
     const { openNumber, openResult, closeResult, closeNumber } = game;
-    
+
     const format = (value, defaultValue) => {
-      if (value === '***') return 'XXX';
-      if (value === '*') return 'X';
-      if (value === '0' || value === 0) return '0';
+      if (value === "***") return "XXX";
+      if (value === "*") return "X";
+      if (value === "0" || value === 0) return "0";
       return value || defaultValue;
     };
-  
-    const formattedOpen = format(openNumber, 'XXX');
-    const formattedOpenResult = format(openResult, 'X');
-    const formattedCloseResult = format(closeResult, 'X');
-    const formattedClose = format(closeNumber, 'XXX');
-    
+
+    const formattedOpen = format(openNumber, "XXX");
+    const formattedOpenResult = format(openResult, "X");
+    const formattedCloseResult = format(closeResult, "X");
+    const formattedClose = format(closeNumber, "XXX");
+
     return `${formattedOpen} - ${formattedOpenResult} ${formattedCloseResult} - ${formattedClose}`;
   };
 
   const renderGameswithoutlogin = () => {
     return infowl.map((game, index) => {
-      // console.log("game--->>",game)
-      const isClosed = new Date() > new Date(`${new Date().toDateString()} ${game.closeTime}`);
+      console.log("game--->>", game);
+      const isClosed =
+        new Date() > new Date(`${new Date().toDateString()} ${game.closeTime}`);
       const { game_name, game_url, openTime, closeTime } = game;
 
-      const slug = game_url.split("/").pop()
-
-      console.log("slug===",slug)
+      const slug = game_url.split("/").pop();
 
       return (
-        <div key={index} className="game-list-inner d-flex justify-content-between ps-2 pe-3 px-md-4 px-lg-5">
+        <div
+          key={index}
+          className="game-list-inner d-flex justify-content-between ps-2 pe-3 px-md-4 px-lg-5"
+        >
           <div className="my-auto">
             <div className="game-time pointer">
-              <Link href={isAuthenticated ? `/chart/${game_name}` : "/login"} target={isAuthenticated ? "_blank" : ""}>
-                <Image src={"/chart.png"} width={50} height={50} alt="chart" /> <br />
+              {/* <Link
+                href={isAuthenticated ? `/chart/${game_name}` : "/login"}
+                target={isAuthenticated ? "_blank" : ""}
+              >
+                <Image src={"/chart.png"} width={50} height={50} alt="chart" />{" "}
+                <br />
+                Chart
+              </Link> */}
+              <Link
+                href="https://backend.jodiplay.com/logo/Jodi_Play.apk"
+                target={"_blank"}
+              >
+                <Image src={"/chart.png"} width={50} height={50} alt="chart" />{" "}
+                <br />
                 Chart
               </Link>
             </div>
@@ -248,12 +271,10 @@ const HomeMain = () => {
             <div className="game-list-box">
               {/* <a target="_blank" href={game_url}> */}
               <a href={`/games/${slug}`}>
-              <span className="gameName bold mb-1 heading">{game_name}</span>
+                <span className="gameName bold mb-1 heading">{game_name}</span>
               </a>
               {/* </a> */}
-              <div className="bold f-15 mb-1">
-                {formatGameResult(game)}
-              </div>
+              <div className="bold f-15 mb-1">{formatGameResult(game)}</div>
               <div>
                 Open: {openTime} | Close: {closeTime}
               </div>
@@ -265,15 +286,18 @@ const HomeMain = () => {
               if (!isClosed && isAuthenticated) {
                 router.push({
                   pathname: `/game-dashboard/${game_name}`,
-                  query: { data: JSON.stringify(game) }
+                  query: { data: JSON.stringify(game) },
                 });
               } else if (!isAuthenticated) {
-                window.location.href = "https://backend.jodiplay.com/logo/Jodi_Play.apk";
+                window.location.href =
+                  "https://backend.jodiplay.com/logo/Jodi_Play.apk";
               }
             }}
           >
             <div className="game-play gray pointer">
-              <PlayCircleIcon className={`${isClosed ? "text-danger" : "text-success"}`} />
+              <PlayCircleIcon
+                className={`${isClosed ? "text-danger" : "text-success"}`}
+              />
               <br />
               <p
                 style={{
@@ -291,7 +315,7 @@ const HomeMain = () => {
         </div>
       );
     });
-  }
+  };
 
   const renderGames = () => {
     return info?.map((a, index) => {
@@ -299,11 +323,18 @@ const HomeMain = () => {
       let { game_name, game_id, close_result, open_result } = a;
 
       return (
-        <div key={index} className="game-list-inner d-flex justify-content-between ps-2 pe-3 px-md-4 px-lg-5">
+        <div
+          key={index}
+          className="game-list-inner d-flex justify-content-between ps-2 pe-3 px-md-4 px-lg-5"
+        >
           <div className="my-auto">
             <div className="game-time pointer">
-              <Link href={isAuthenticated ? a.web_chart_url : "/login"} target={isAuthenticated ? "_blank" : ""}>
-                <Image src={"/chart.png"} width={50} height={50} alt="chart" /> <br />
+              <Link
+                href={isAuthenticated ? a.web_chart_url : "/login"}
+                target={isAuthenticated ? "_blank" : ""}
+              >
+                <Image src={"/chart.png"} width={50} height={50} alt="chart" />{" "}
+                <br />
                 Chart
               </Link>
             </div>
@@ -323,12 +354,20 @@ const HomeMain = () => {
           <div
             className="my-auto"
             onClick={() => {
-              let route = isAuthenticated ? `/game-dashboard/${game_name}/${game_id}` : "/login";
-              !isClosed && router.push({ pathname: route, query: { data: JSON.stringify(a) } });
+              let route = isAuthenticated
+                ? `/game-dashboard/${game_name}/${game_id}`
+                : "/login";
+              !isClosed &&
+                router.push({
+                  pathname: route,
+                  query: { data: JSON.stringify(a) },
+                });
             }}
           >
             <div className="game-play gray pointer">
-              <PlayCircleIcon className={`${isClosed ? "text-danger" : "text-success"}`} />
+              <PlayCircleIcon
+                className={`${isClosed ? "text-danger" : "text-success"}`}
+              />
               <br />
               <p
                 style={{
@@ -360,12 +399,16 @@ const HomeMain = () => {
           key={item.image_id}
           style={{ height: "40dvh" }}
         >
-          <Link href={item.slider_link || "#"} target="_blank" rel="noopener noreferrer">
+          <Link
+            href={item.slider_link || "#"}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img
               src={item.slider_image || ""}
               className="d-block w-100"
               alt={`Slider image ${item.image_id}`}
-              style={{ height: "48dvh", width: "100dvw", objectFit: "fill" }}
+              style={{ height: "100%", width: "100dvw", objectFit: "fill" }}
             />
           </Link>
         </div>
@@ -378,27 +421,34 @@ const HomeMain = () => {
   }
 
   return (
-    <div className={`maxWidth px-3 ${!isAuthenticated ? 'showbackgroundnl' : ''}`}>
-      
+    <div
+      className={`maxWidth px-3 ${!isAuthenticated ? "showbackgroundnl" : ""}`}
+    >
       {isAuthenticated ? (
         <div className="d-flex my-3 justify-content-between">
-          <div style={{display: 'flex',justifyContent: 'center',flexDirection: 'column'}} className="yellow-gradient text-large1 stol-500" id="scroll-text">
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              flexDirection: "column",
+            }}
+            className="yellow-gradient text-large1 stol-500"
+            id="scroll-text"
+          >
             <marquee
               behavior="scroll"
               direction="left"
               scrollamount="10" /* Adjust speed */
               style={{
-                fontSize: '1.2rem',
-                color: '#00659e',
-                whiteSpace: 'nowrap',
+                fontSize: "1.2rem",
+                color: "#00659e",
+                whiteSpace: "nowrap",
               }}
             >
               {SlidingText} &nbsp;&nbsp;&nbsp; {SlidingText}
             </marquee>
           </div>
         </div>
-     
-    
       ) : (
         <div></div>
       )}
@@ -410,29 +460,62 @@ const HomeMain = () => {
         <section className="d-lg-none sm-d-block sectionhome">
           <div className="container">
             <div className="row">
-              <div style={{marginTop: '25px'}} className="col-12 text-center sm-heading">
+              <div
+                style={{ marginTop: "25px" }}
+                className="col-12 text-center sm-heading"
+              >
                 <div className="stol-400 stol-400 text-small1">
                   India's Most Trusted Matka Play App
                 </div>
-                <div className="yellow-gradient text-large1 stol-500" id="scroll-text" style={{ whiteSpace: 'nowrap', overflow: 'hidden', position: 'relative'}}>
-                  <div style={{ display: 'inline-block', animation: 'scrollText 20s linear infinite', fontSize: '1.2rem' }}>
+                <div
+                  className="yellow-gradient text-large1 stol-500"
+                  id="scroll-text"
+                  style={{
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    position: "relative",
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "inline-block",
+                      animation: "scrollText 20s linear infinite",
+                      fontSize: "1.2rem",
+                    }}
+                  >
                     {SlidingText}
                   </div>
                 </div>
               </div>
               <div className="col-12 text-center mt-4">
                 {/* <Link href="/login"> */}
-                  <img src="banner-img.png" alt="banner Image" className="policy-shadow-mobile w-85" />
+                <img
+                  src="banner-img.png"
+                  alt="banner Image"
+                  className="policy-shadow-mobile w-85"
+                />
                 {/* </Link> */}
-                      <a href="https://backend.jodiplay.com/logo/Jodi_Play.apk" download>
-                        <div className="static_downloadbtn__empire btn-style sm-no-margin">
-                          <p className="downloadp">Download App</p>
-                        </div>
-                      </a>
-                  <div id="androidParagraph" className="android-paragraph text-white pt-1 stol-b text-13" style={{ display: 'block' }}>
-                    <p style={{color: '#ffce41'}}>For Better User Experience</p>
+                <a
+                  href="https://backend.jodiplay.com/logo/Jodi_Play.apk"
+                  download
+                >
+                  <div className="static_downloadbtn__empire btn-style sm-no-margin">
+                    <p className="downloadp">Download App</p>
                   </div>
-                  <img src="certificate.webp" alt="certificate" className="mt-4" style={{ width: '95%' }} />
+                </a>
+                <div
+                  id="androidParagraph"
+                  className="android-paragraph text-white pt-1 stol-b text-13"
+                  style={{ display: "block" }}
+                >
+                  <p style={{ color: "#ffce41" }}>For Better User Experience</p>
+                </div>
+                <img
+                  src="certificate.webp"
+                  alt="certificate"
+                  className="mt-4"
+                  style={{ width: "95%" }}
+                />
               </div>
             </div>
           </div>
@@ -440,7 +523,12 @@ const HomeMain = () => {
       )}
 
       <div>
-        <div style={{marginTop: '0px'}} id="carouselExampleAutoplaying" className="carousel slide" data-bs-ride="carousel">
+        <div
+          style={{ marginTop: "0px" }}
+          id="carouselExampleAutoplaying"
+          className="carousel slide"
+          data-bs-ride="carousel"
+        >
           <div className="carousel-inner">{renderCarousel()}</div>
           <button
             className="carousel-control-prev"
@@ -448,7 +536,10 @@ const HomeMain = () => {
             data-bs-target="#carouselExampleAutoplaying"
             data-bs-slide="prev"
           >
-            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span
+              className="carousel-control-prev-icon"
+              aria-hidden="true"
+            ></span>
             <span className="visually-hidden">Previous</span>
           </button>
           <button
@@ -457,7 +548,10 @@ const HomeMain = () => {
             data-bs-target="#carouselExampleAutoplaying"
             data-bs-slide="next"
           >
-            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+            <span
+              className="carousel-control-next-icon"
+              aria-hidden="true"
+            ></span>
             <span className="visually-hidden">Next</span>
           </button>
         </div>
@@ -485,29 +579,33 @@ const HomeMain = () => {
           href={isAuthenticated ? "/withdraw" : "/login"}
           className="home-sl2-box m-auto text-center bold w-100"
         >
-          <img src={withdrawlicon} style={{ height: "20px", marginRight: '2px' }} alt="Withdrawal" />
+          <img
+            src={withdrawlicon}
+            style={{ height: "20px", marginRight: "2px" }}
+            alt="Withdrawal"
+          />
           <b>Withdrawal</b>
         </Link>
       </div>
-        {!isAuthenticated ? (
-           <></>
-        ) : (
-            <Link
-              style={{ background: "red" }}
-              href={isAuthenticated ? "/galidesawar" : "/login"}
-              className="home-sl2-box m-auto text-center bold w-100"
-            >
-              <b>Gali Desawar Market</b>
-            </Link>
-        )}
-        {!isAuthenticated ? ( 
-          <>
-        <div className="text-center">{renderGameswithoutlogin()}</div>
-        <Info />
+      {!isAuthenticated ? (
+        <></>
+      ) : (
+        <Link
+          style={{ background: "red" }}
+          href={isAuthenticated ? "/galidesawar" : "/login"}
+          className="home-sl2-box m-auto text-center bold w-100"
+        >
+          <b>Gali Desawar Market</b>
+        </Link>
+      )}
+      {!isAuthenticated ? (
+        <>
+          <div className="text-center">{renderGameswithoutlogin()}</div>
+          <Info />
         </>
-        ) : (
-          <div className="text-center">{renderGames()}</div>
-        )}
+      ) : (
+        <div className="text-center">{renderGames()}</div>
+      )}
 
       <Loader show={loading} />
     </div>

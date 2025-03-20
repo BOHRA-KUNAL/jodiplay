@@ -54,29 +54,29 @@ const Navbar = () => {
   useEffect(() => {
     // Update header title based on the current route
     const routeTitles = {
-      '/': 'JODI PLAY',
-      '/wallet': 'Wallet',
-      '/signup': 'Register',
-      '/my-profile': 'My Profile',
-      '/add-fund': 'Add Funds',
-      '/payment-methods': 'Payment Methods',
-      '/withdraw': 'Withdraw',
-      '/bidding-history': 'Bid History',
-      '/win-history': 'Winning History',
-      '/notifications': 'Notifications',
-      '/change-password': 'Change Password',
-      '/game-rates': 'Game Rates',
-      '/howtoplay': 'How to Play',
-      '/support': 'Support',
-      '/withdraw': 'Withdraw',
-      '/withdraw': 'Withdraw',
-      '/galidesawar/game-rates': 'Game Rates',
-      '/galidesawar/bidding-history': 'Bid History',
-      '/galidesawar/win-history': 'Winning History',
+      "/": "JODI PLAY",
+      "/wallet": "Wallet",
+      "/signup": "Register",
+      "/my-profile": "My Profile",
+      "/add-fund": "Add Funds",
+      "/payment-methods": "Payment Methods",
+      "/withdraw": "Withdraw",
+      "/bidding-history": "Bid History",
+      "/win-history": "Winning History",
+      "/notifications": "Notifications",
+      "/change-password": "Change Password",
+      "/game-rates": "Game Rates",
+      "/howtoplay": "How to Play",
+      "/support": "Support",
+      "/withdraw": "Withdraw",
+      "/withdraw": "Withdraw",
+      "/galidesawar/game-rates": "Game Rates",
+      "/galidesawar/bidding-history": "Bid History",
+      "/galidesawar/win-history": "Winning History",
       // Add more route titles as needed
     };
 
-    const currentTitle = routeTitles[router.pathname] || 'JODI PLAY';
+    const currentTitle = routeTitles[router.pathname] || "JODI PLAY";
     dispatch(setHeaderTitle(currentTitle));
   }, [router.pathname, dispatch]);
 
@@ -87,7 +87,12 @@ const Navbar = () => {
     <>
       {active && <SideBar setActive={setActive} />}
 
-      <nav className={`navbar navbar-expand-lg ${!isLoggedIn ? 'showbackgroundnl' : ''}`} style={{ backgroundColor: "#00659e" }}>
+      <nav
+        className={`navbar navbar-expand-lg ${
+          !isLoggedIn ? "showbackgroundnl" : ""
+        }`}
+        style={{ backgroundColor: "#00659e" }}
+      >
         <div className="container-fluid">
           <button
             onClick={() => setActive(!active)}
@@ -109,18 +114,39 @@ const Navbar = () => {
             {headerTitle || "JODI PLAY"}
           </Link>
 
-          {isClient && (
-            isLoggedIn ? (
+          {isClient &&
+            (isLoggedIn ? (
               <Link href="/wallet" className="ml-auto">
-                <img src={walletIcon} style={{ maxWidth: "30px" }} alt="Wallet" />
-                <span style={{color: 'white', marginLeft: '8px', verticalAlign: 'middle'}} className="walletamt">₹{amount}</span>
+                <img
+                  src={walletIcon}
+                  style={{ maxWidth: "30px" }}
+                  alt="Wallet"
+                />
+                <span
+                  style={{
+                    color: "white",
+                    marginLeft: "8px",
+                    verticalAlign: "middle",
+                  }}
+                  className="walletamt"
+                >
+                  ₹{amount}
+                </span>
               </Link>
             ) : (
-              <Link href="signup" className="btn bg-white d-inline-block ml-auto" type="button">
-                <span className="walletamt">Register</span>
-              </Link>
-            )
-          )}
+              <>
+                {/* // <Link href="signup" className="btn bg-white d-inline-block ml-auto" type="button">
+              //   <span className="walletamt">Register</span>
+              // </Link> */}
+                <Link
+                  href="https://backend.jodiplay.com/logo/Jodi_Play.apk"
+                  className="btn bg-white d-inline-block ml-auto"
+                  type="button"
+                >
+                  <span className="walletamt">Download Mobile App</span>
+                </Link>
+              </>
+            ))}
         </div>
       </nav>
     </>
